@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('artworks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('artist_id')->constrained()->onDelete('cascade');
+            $table->string('artworkable_type');
+            $table->unsignedBigInteger('artworkable_id');
             $table->timestamps();
         });
     }

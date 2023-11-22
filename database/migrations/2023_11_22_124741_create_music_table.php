@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('music', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('video_link')->nullable();
+            $table->string('music_link')->nullable();
+            $table->string('cover')->nullable();
+            $table->foreignId('album_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('movie_videos', function (Blueprint $table) {
+        Schema::create('artwork_infos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('movie_id')->constrained()->onDelete('cascade');
+            $table->string('artworkable_type');
+            $table->unsignedBigInteger('artworkable_id');
+            $table->string('trailler');
+            $table->string('director');
+            $table->date('production_date');
             $table->timestamps();
         });
     }
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('movie_videos');
+        Schema::dropIfExists('artwork_infos');
     }
 };

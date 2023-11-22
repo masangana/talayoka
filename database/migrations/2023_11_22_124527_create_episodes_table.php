@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('episodes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('season_id')->constrained()->onDelete('cascade');
+            $table->string('title');
+            $table->string('video_link');
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }
