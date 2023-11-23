@@ -25,10 +25,10 @@ class RedirectIfAuthenticated
 
                 switch ($role) {
                     case 'admin':
-                        return redirect('/admin_dashboard');
+                        return redirect('/admin/dashboard');
                         break;
                     case 'user':
-                        return redirect('/user_dashboard');
+                        return redirect('/user/dashboard');
                         break; 
 
                     default:
