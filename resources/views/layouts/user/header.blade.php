@@ -6,9 +6,15 @@
                 <div class="header-column">
                     <div class="header-row">
                         <div class="header-logo">
-                            <a href="index.html">
-                                <img alt="Porto" width="100" height="48" data-sticky-width="82" data-sticky-height="40" src="img/logo-default-slim.png">
-                            </a>
+                            @auth
+                                <a href="{{ url('/home') }}">
+                                    <img alt="Porto" width="100" height="48" data-sticky-width="82" data-sticky-height="40" src="{{asset ('assets/user/img/logo-default-slim.png')}}">
+                                </a>
+                            @else
+                                <a href="{{ url('/') }}">
+                                    <img alt="Porto" width="100" height="48" data-sticky-width="82" data-sticky-height="40" src="{{asset ('assets/user/img/logo-default-slim.png')}}">
+                                </a>
+                            @endauth
                         </div>
                     </div>
                 </div>
