@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Web\Admin\SerieController as AdminSerieController;
 use App\Http\Controllers\Web\User\DashboardController as UserDashboardController;
 
 /*
@@ -25,9 +26,9 @@ Route::group([
     'middleware' => 'role:admin',
     'prefix' => 'admin',
     'as' => 'admin.',
-    'namespace' => 'Web\Admin'
     ], function() {
         Route::get('/dashboard', [AdminDashboardController::class,'index'])->name('dashboard');
+        Route::resource('serie', AdminSerieController::class);
 });
 //Route::get('/admin_dashboard', [AdminDashboardController::class,'index'])->name('admin.dashboard');
 
