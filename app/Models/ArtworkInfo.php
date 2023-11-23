@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class ArtworkInfo extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'artworkable_type',
+        'artworkable_id',
+        'trailler',
+        'director',
+        'production_date',
+        'cover'
+    ];
+
+    public function artworkable(){
+        return $this->morphTo();
+    }
+    //public function art
 }

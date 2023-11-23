@@ -38,9 +38,10 @@ class SerieController extends Controller
             *
             * @return Response
             */
-        public function store()
+        public function store(Request $request)
         {
-            //
+            return redirect()->back();
+            return $request->all();
         }
     
         /**
