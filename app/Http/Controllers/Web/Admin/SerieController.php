@@ -55,17 +55,15 @@ class SerieController extends Controller
                 'production_date' => 'required',
                 'cover' => 'required',
             ]);
-            //return $request->all();
-            //return redirect()->back();
+
             try {
                 $result =  DB::transaction(function () use ($request){
                     if ($request->hasFile('cover')){
                         $folder_name = time().rand(1,99);
                         $file_name = $folder_name.'.'.$request->cover->extension();
                         ImageIntervention::make($request->cover)->resize(550, 412)->save(storage_path('app/public/cover/'.$file_name));
-                        //return  $file_name;
                     }
-                    //return $request->all();
+
                     $serie = Series::create([
                         'title' => $request->title,
                         'slug' => $request->slug,
