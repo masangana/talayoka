@@ -10,12 +10,12 @@
               <h5 class="card-title">Floating labels Form</h5>
   
               <!-- Floating Labels Form -->
-              <form class="row g-3" method="POST" action="{{Route('admin.serie.store')}}">
+              <form class="row g-3" method="POST" action="{{Route('admin.serie.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-12">
                   <div class="form-floating">
                     <input type="text" class="form-control" id="floatingName" placeholder="Titre de la série" name="title" required>
-                    <label for="floatingName">TItre</label>
+                    <label for="floatingName">Titre</label>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                      <select class="form-select" id="floatingSelect" aria-label="State">
+                      <select class="form-select" id="floatingSelect" aria-label="State" name="category_id">
                         <option value="" selected>...</option>
                         @foreach ($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
@@ -44,22 +44,28 @@
                 <hr>
                 <div class="col-md-12">
                     <div class="form-floating">
-                      <input type="text" class="form-control" id="floatingName" placeholder="Your Name">
+                      <input type="text" class="form-control" id="floatingName" placeholder="Your Name" name="trailler">
                       <label for="floatingName">Trailler</label>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="form-floating">
-                      <input type="text" class="form-control" id="floatingName" placeholder="Your Name">
+                      <input type="text" class="form-control" id="floatingName" placeholder="Your Name" name="director">
                       <label for="floatingName">Réalisateur</label>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="form-floating">
-                      <input type="date" class="form-control">
+                      <input type="date" class="form-control" name="production_date">
                       <label for="inputDate" class="col-sm-2 col-form-label">Date de Production</label>
                     </div>
                 </div>
+                
+                <div class="col-md-12">
+                  <div class="form-floating">
+                    <input type="file" class="form-control" name="cover">
+                  </div>
+              </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary">Submit</button>
                   <button type="reset" class="btn btn-secondary">Reset</button>
