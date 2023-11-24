@@ -7,8 +7,19 @@
       <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Floating labels Form</h5>
-  
+              <h5 class="card-title">Création</h5>
+              @if (session('success'))
+                <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert">
+                  Serie ajoutée avec succès
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              @endif
+              @if ($errors->any())
+                <div class="alert alert-danger bg-danger text-light border-0 alert-dismissible fade show" role="alert">
+                  Une erreur est survenue lors de l'ajout de la série
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              @endif
               <!-- Floating Labels Form -->
               <form class="row g-3" method="POST" action="{{Route('admin.serie.store')}}" enctype="multipart/form-data">
                 @csrf
