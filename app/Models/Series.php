@@ -18,7 +18,11 @@ class Series extends Model
     ];
 
     public function artworkInfo(){
-        return $this->morphTo(ArtworkInfo::class, 'artworkable');
+        return $this->morphOne(ArtworkInfo::class, 'artworkable');
         //return $this->belongsTo(ArtworkInfo::class);
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 }

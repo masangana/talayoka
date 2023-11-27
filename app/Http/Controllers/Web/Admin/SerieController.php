@@ -20,7 +20,12 @@ class SerieController extends Controller
         */
         public function index()
         {
-            //
+            $series = Series::with('category', 'artworkInfo')-> latest()->get();
+            //return $series;
+            return view('admin.serie.index', [
+                'title' => "Liste des series",
+                'series' => $series
+            ]);
         }
     
         /**
@@ -31,9 +36,11 @@ class SerieController extends Controller
         public function create()
         {
             $categories = Category::all();
+            $series = Series::latest()->get;
             return view('admin.serie.create', [
                 'title' => "Créer une serie",
-                'categories' => $categories
+                'categories' => $categories,
+                'series' => $series
             ]);
 
         }
@@ -106,7 +113,11 @@ class SerieController extends Controller
             */
         public function edit($id)
         {
-            //
+            return view('admin.serie.edit', [
+                'title' => "Modifier une serie",
+                'serie' => Series::with('artworkInfo') ->findOrFail($id),
+                'categories' => Category::all(),
+            ]);
         }
     
         /**
@@ -117,7 +128,12 @@ class SerieController extends Controller
             */
         public function update($id)
         {
-            //
+            return $id;
+            return view('admin.serie.edit', [
+                'title' => "Modifier une serie",
+                'serie' => Series::findOrFail($id),
+                'categories' => Category::all(),
+            ]);
         }
     
         /**
