@@ -20,4 +20,8 @@ class Movie extends Model
     public function artworkInfo(){
         return $this->morphOne(ArtworkInfo::class, 'artworkable');
     }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }

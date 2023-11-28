@@ -15,7 +15,7 @@ class MovieController extends Controller
     public function index(){
         return view('admin.movie.index', [
             'title' => "Liste des films",
-            'movies' => Movie::latest()->get(),
+            'movies' => Movie:: with('category', 'artworkInfo')->latest()->get(),
         ]);
     }
 
@@ -27,7 +27,6 @@ class MovieController extends Controller
     }
 
     public function store(Request $request){
-        //return $request->all();
         $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required',
@@ -36,8 +35,6 @@ class MovieController extends Controller
             'video_link' => 'required',
             'cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
-        //return $request->all();
 
         try {
             $result =  DB::transaction(function () use ($request){
