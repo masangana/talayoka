@@ -9,6 +9,10 @@ class ArtworkInfo extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'production_date' => 'date',
+    ];
+
     protected $fillable = [
         'artworkable_type',
         'artworkable_id',
