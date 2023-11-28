@@ -36,12 +36,20 @@
                                             @endauth
                                         </li>
                                         <li class="dropdown dropdown-mega">
-                                            <a class="dropdown-item dropdown-toggle" href="elements.html">
+                                            <a class="dropdown-item dropdown-toggle 
+                                                @if(Route::current()->getName() == 'serie.index')
+                                                    active
+                                                @endif
+                                                " href="{{Route('serie.index')}}">
                                                 Séries
                                             </a>
                                         </li>
                                         <li class="dropdown">
-                                            <a class="dropdown-item dropdown-toggle active" href="#">
+                                            <a class="dropdown-item dropdown-toggle 
+                                                @if(Route::current()->getName() == 'movie.index')
+                                                    active
+                                                @endif" 
+                                                href="{{Route('movie.index')}}">
                                                 Films
                                             </a>
                                         </li>
