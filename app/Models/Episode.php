@@ -12,7 +12,7 @@ class Episode extends Model
     protected $fillable = [
         'title',
         'season_id',
-        'description',
+        'comment',
         'video_link',
     ];
 }

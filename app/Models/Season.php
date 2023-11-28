@@ -13,4 +13,12 @@ class Season extends Model
         'title',
         'series_id',
     ];
+
+    public function episodes(){
+        return $this->hasMany(Episode::class)->orderBy('created_at', 'DESC');
+    }
+
+    public function series(){
+        return $this->belongsTo(Series::class);
+    }
 }

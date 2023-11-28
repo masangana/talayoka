@@ -17,6 +17,11 @@ class Series extends Model
         'category_id'
     ];
 
+    public function seasons(){
+        return $this->hasMany(Season::class)-> with('episodes')
+         ->orderBy('created_at', 'DESC');
+    }
+
     public function artworkInfo(){
         return $this->morphOne(ArtworkInfo::class, 'artworkable');
         //return $this->belongsTo(ArtworkInfo::class);

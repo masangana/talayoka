@@ -128,7 +128,20 @@
               <input type="hidden" name="serie" value="{{$serie->id}}">
               <div class="col-12">
                 <label for="inputNanme4" class="form-label">Titre</label>
-                <input required name="title" type="text" class="form-control" id="inputNanme4">
+                <input required name="title" type="text" class="form-control" id="inputNanme4" required>
+              </div>
+              <div class="col-12">
+                <label for="inputNanme4" class="form-label">Video</label>
+                <input required name="video_link" type="text" class="form-control" id="inputNanme4" required>
+              </div>
+              <div class="col-12">
+                <label for="inputNanme4" class="form-label">Saison</label>
+                <select class="form-select" id="floatingSelect" aria-label="State" name="season">
+                  <option value="" selected>...</option>
+                  @foreach ($seasons as $season)
+                      <option value="{{$season->id}}" >{{$season->title}}</option>
+                  @endforeach
+                </select>
               </div>
               <div class="col-12">
                 <label for="inputAddress" class="form-label">Description</label>

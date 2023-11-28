@@ -7,6 +7,7 @@ use App\Models\Artwork;
 use App\Models\ArtworkInfo;
 use App\Models\Category;
 use App\Models\Series;
+use App\Models\Season;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image as ImageIntervention;
@@ -117,6 +118,7 @@ class SerieController extends Controller
                 'title' => "Modifier une serie",
                 'serie' => Series::with('artworkInfo') ->findOrFail($id),
                 'categories' => Category::all(),
+                'seasons' => Season::where('series_id', $id)->get(),
             ]);
         }
     
