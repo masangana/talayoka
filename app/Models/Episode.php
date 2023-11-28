@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Episode extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'season_id',
+        'description',
+        'video_link',
+    ];
 }

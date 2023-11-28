@@ -103,10 +103,12 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Ajouter une Saison</h5>
-            <form class="row g-3">
+            <form action="{{Route('admin.season.store')}}" method="POST"  class="row g-3">
+              @csrf
+              <input type="hidden" name="serie" value="{{$serie->id}}">
               <div class="col-12">
                 <label for="inputNanme4" class="form-label">Titre de la Saison</label>
-                <input type="text" class="form-control" id="inputNanme4" name="title">
+                <input type="text" class="form-control" id="inputNanme4" name="title" required>
               </div>
               <div class="text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -121,14 +123,16 @@
             <h5 class="card-title">Ajouter un épisode</h5>
 
             <!-- Vertical Form -->
-            <form class="row g-3">
+            <form action="{{Route('admin.episode.store')}}" method="POST" class="row g-3">
+              @csrf
+              <input type="hidden" name="serie" value="{{$serie->id}}">
               <div class="col-12">
                 <label for="inputNanme4" class="form-label">Titre</label>
-                <input name="title" type="text" class="form-control" id="inputNanme4">
+                <input required name="title" type="text" class="form-control" id="inputNanme4">
               </div>
               <div class="col-12">
                 <label for="inputAddress" class="form-label">Description</label>
-                <textarea class="form-control" placeholder="Description" id="floatingTextarea" style="height: 100px;" name="description"></textarea>
+                <textarea class="form-control" placeholder="Description" id="floatingTextarea" style="height: 100px;" name="description" required></textarea>
               </div>
               <div class="text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
