@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Movie extends Model
 {
     use HasFactory;
+
+    protected $fillable=[
+        'title',
+        'slug',
+        'description',
+        'category_id',
+        'video_link',
+    ];
+
+    public function artworkInfo(){
+        return $this->morphOne(ArtworkInfo::class, 'artworkable');
+    }
 }
