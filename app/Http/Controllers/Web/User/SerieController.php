@@ -14,4 +14,13 @@ class SerieController extends Controller
             'series' => Series:: with('category', 'artworkInfo')->latest()->paginate(12),
         ]);
     }
+
+    public function show($slug){
+        $serie = Series::with('category', 'artworkInfo')->where('slug', $slug)->firstOrFail();
+
+        return view('user.serie.show', [
+            'title' => $serie->title,
+            'serie' => $serie,
+        ]);
+    }
 }

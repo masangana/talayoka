@@ -15,8 +15,9 @@ class MovieController extends Controller
         ]);
     }
 
-    public function show($id){
-        $movie = Movie::with('category', 'artworkInfo')->findOrFail($id);
+    public function show($slug){
+        $movie = Movie::with('category', 'artworkInfo')->where('slug', $slug)->firstOrFail();
+        //$movie = Movie::with('category', 'artworkInfo')->findOrFail($id);
         return view('user.movie.show', [
             'title' => $movie->title,
             'movie' => $movie,
