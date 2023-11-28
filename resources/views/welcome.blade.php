@@ -138,7 +138,7 @@
                 <div class="post-block post-author pt-2">
                     <div class="img-thumbnail img-thumbnail-no-borders d-block pb-3">
                         <a href="{{Route('serie.show', $suggestedMovie->slug)}}">
-                            <img class="border-radius-0" src="{{asset('storage/cover/'.$suggestedSerie->artworkInfo->cover)}}" alt="The post author image" style="height: 112px; max-height: 112px; width: auto; max-width: 100%;">
+                            <img class="border-radius-0" src="{{asset('storage/cover/'.optional($suggestedSerie->artworkInfo)->cover)}}" alt="Cover" style="height: 112px; max-height: 112px; width: auto; max-width: 100%;">
                         </a>
                     </div>
                     <p>
@@ -162,58 +162,13 @@
             <div class="row">
                 <div class="col text-center">								
                     <div class="owl-carousel owl-theme nav-dark stage-margin nav-style-1 m-0" data-plugin-options="{'items': 6, 'margin': 5, 'loop': false, 'nav': true, 'dots': false, 'stagePadding': 40}">
-
+                        @foreach($categories as $category)
                         <div class="px-3">
-                            <a href="#" class="btn btn-dark w-100 py-3 rounded-0 text-2 text-uppercase font-weight-bold">Gadgets</a>
+                            <a href="#" class="btn btn-dark w-100 py-3 rounded-0 text-2 text-uppercase font-weight-bold">
+                                {{$category->name}}
+                            </a>
                         </div>
-
-                        <div class="px-3">
-                            <a href="#" class="btn btn-dark w-100 py-3 rounded-0 text-2 text-uppercase font-weight-bold">Photography</a>
-                        </div>
-
-                        <div class="px-3">
-                            <a href="#" class="btn btn-dark w-100 py-3 rounded-0 text-2 text-uppercase font-weight-bold">Lifestyle</a>
-                        </div>
-
-                        <div class="px-3">
-                            <a href="#" class="btn btn-dark w-100 py-3 rounded-0 text-2 text-uppercase font-weight-bold">Fashion</a>
-                        </div>
-
-                        <div class="px-3">
-                            <a href="#" class="btn btn-dark w-100 py-3 rounded-0 text-2 text-uppercase font-weight-bold">Recipes</a>
-                        </div>
-
-                        <div class="px-3">
-                            <a href="#" class="btn btn-dark w-100 py-3 rounded-0 text-2 text-uppercase font-weight-bold">Travel</a>
-                        </div>
-
-                        <div class="px-3">
-                            <a href="#" class="btn btn-dark w-100 py-3 rounded-0 text-2 text-uppercase font-weight-bold">Business</a>
-                        </div>
-
-                        <div class="px-3">
-                            <a href="#" class="btn btn-dark w-100 py-3 rounded-0 text-2 text-uppercase font-weight-bold">Architecture</a>
-                        </div>
-
-                        <div class="px-3">
-                            <a href="#" class="btn btn-dark w-100 py-3 rounded-0 text-2 text-uppercase font-weight-bold">Reviews</a>
-                        </div>
-
-                        <div class="px-3">
-                            <a href="#" class="btn btn-dark w-100 py-3 rounded-0 text-2 text-uppercase font-weight-bold">Sports</a>
-                        </div>
-
-                        <div class="px-3">
-                            <a href="#" class="btn btn-dark w-100 py-3 rounded-0 text-2 text-uppercase font-weight-bold">Videos</a>
-                        </div>
-
-                        <div class="px-3">
-                            <a href="#" class="btn btn-dark w-100 py-3 rounded-0 text-2 text-uppercase font-weight-bold">Technology</a>
-                        </div>
-
-                        <div class="px-3">
-                            <a href="#" class="btn btn-dark w-100 py-3 rounded-0 text-2 text-uppercase font-weight-bold">Design</a>
-                        </div>
+                        @endforeach
 
                     </div>
                 </div>
@@ -225,308 +180,357 @@
 
         <div class="row mt-5 pt-3">
             <div class="col-md-9">
-                <div class="blog-posts">
 
-                    <article class="post post-large">
-                        <div class="post-image">
-                            <a href="blog-post.html">
-                                <img src="img/blog/wide/blog-54.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="How to Make Friends as a Grown-Up" />
-                            </a>
-                        </div>
+                <div class="heading heading-border heading-middle-border">
+                    <h3 class="text-4"><strong class="font-weight-bold text-1 px-3 text-light py-2 bg-secondary">Gadgets</strong></h3>
+                </div>
 
-                        <div class="post-date text-1">
-                            <span class="day border-radius-0 text-4 text-dark">12</span>
-                            <span class="month border-radius-0 text-1 bg-color-dark">Jan</span>
-                        </div>
+                <div class="row pb-1">
 
-                        <div class="post-content">
-
-                            <h2 class="font-weight-semibold text-6 line-height-3 mb-3"><a href="blog-post.html" class="text-color-dark text-color-hover-primary">How to Make Friends as a Grown-Up</a></h2>
-                            <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque pellentesque tempor tellus eget hendrerit. Morbi id aliquam ligula. Aliquam id dui sem. Proin rhoncus consequat nisl, eu ornare mauris tincidunt vitae. [...]</p>
-
-                            <div class="post-meta">
-                                <span><i class="far fa-user"></i> By <a href="#">John Doe</a> </span>
-                                <span><i class="far fa-folder"></i> <a href="#">Lifestyle</a>, <a href="#">Travel</a> </span>
-                                <span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>
-                                <span class="d-block d-sm-inline-block float-sm-end mt-3 mt-sm-0"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
-                            </div>
-
-                        </div>
-                    </article>
-
-                    <article class="post post-large">
-                        <div class="post-image">
-                            <a href="blog-post.html">
-                                <img src="img/blog/wide/blog-55.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="Simple Ways to Have a Pretty Face" />
-                            </a>
-                        </div>
-
-                        <div class="post-date text-1">
-                            <span class="day border-radius-0 text-4 text-dark">12</span>
-                            <span class="month border-radius-0 text-1 bg-color-dark">Jan</span>
-                        </div>
-
-                        <div class="post-content">
-
-                            <h2 class="font-weight-semibold text-6 line-height-3 mb-3"><a href="blog-post.html" class="text-color-dark text-color-hover-primary">Simple Ways to Have a Pretty Face</a></h2>
-                            <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque pellentesque tempor tellus eget hendrerit. Morbi id aliquam ligula. Aliquam id dui sem. Proin rhoncus consequat nisl, eu ornare mauris tincidunt vitae. [...]</p>
-
-                            <div class="post-meta">
-                                <span><i class="far fa-user"></i> By <a href="#">John Doe</a> </span>
-                                <span><i class="far fa-folder"></i> <a href="#">Photography</a>, <a href="#">Travel</a> </span>
-                                <span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>
-                                <span class="d-block d-sm-inline-block float-sm-end mt-3 mt-sm-0"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
-                            </div>
-
-                        </div>
-                    </article>
-
-                    <article class="post post-large">
-                        <div class="post-image">
-                            <a href="blog-post.html">
-                                <img src="img/blog/wide/blog-56.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="Ranking the greatest players in basketball" />
-                            </a>
-                        </div>
-
-                        <div class="post-date text-1">
-                            <span class="day border-radius-0 text-4 text-dark">12</span>
-                            <span class="month border-radius-0 text-1 bg-color-dark">Jan</span>
-                        </div>
-
-                        <div class="post-content">
-
-                            <h2 class="font-weight-semibold text-6 line-height-3 mb-3"><a href="blog-post.html" class="text-color-dark text-color-hover-primary">Ranking the greatest players in basketball</a></h2>
-                            <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque pellentesque tempor tellus eget hendrerit. Morbi id aliquam ligula. Aliquam id dui sem. Proin rhoncus consequat nisl, eu ornare mauris tincidunt vitae. [...]</p>
-
-                            <div class="post-meta">
-                                <span><i class="far fa-user"></i> By <a href="#">John Doe</a> </span>
-                                <span><i class="far fa-folder"></i> <a href="#">Sports</a>, <a href="#">Business</a> </span>
-                                <span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>
-                                <span class="d-block d-sm-inline-block float-sm-end mt-3 mt-sm-0"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
-                            </div>
-
-                        </div>
-                    </article>
-
-                    <article class="post post-large">
-                        <div class="post-image">
-                            <div class="owl-carousel owl-theme show-nav-hover dots-inside nav-inside nav-style-1 nav-light" data-plugin-options="{'items': 1, 'margin': 10, 'loop': false, 'nav': true, 'dots': true}">
-                                <div>
-                                    <div class="img-thumbnail border-0 p-0 d-block">
-                                        <a href="blog-post.html">
-                                            <img src="img/blog/wide/blog-58.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="Top Camper Trailer Towing Tips" />
-                                        </a>
-                                    </div>
+                    <div class="col-lg-6 mb-4 pb-1">
+                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-2 mb-2">
+                            <div class="row">
+                                <div class="col">
+                                    <a href="blog-post.html">
+                                        <img src="img/blog/default/blog-67.jpg" class="img-fluid border-radius-0" alt="Why should I buy a smartwatch?">
+                                    </a>
                                 </div>
-                                <div>
-                                    <div class="img-thumbnail border-0 p-0 d-block">
-                                        <a href="blog-post.html">
-                                            <img src="img/blog/wide/blog-58.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="Top Camper Trailer Towing Tips" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="img-thumbnail border-0 p-0 d-block">
-                                        <a href="blog-post.html">
-                                            <img src="img/blog/wide/blog-58.jpg" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="Top Camper Trailer Towing Tips" />
-                                        </a>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="thumb-info-caption-text">
+                                        <div class="d-inline-block text-default text-1 mt-2 float-none">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                                        </div>
+                                        <h4 class="d-block line-height-2 text-4 text-dark font-weight-bold mb-0">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">Why should I buy a smartwatch?</a>
+                                        </h4>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </article>
+                    </div>
 
-                        <div class="post-date text-1">
-                            <span class="day border-radius-0 text-4 text-dark">12</span>
-                            <span class="month border-radius-0 text-1 bg-color-dark">Jan</span>
-                        </div>
+                    <div class="col-lg-6">
 
-                        <div class="post-content">
-
-                            <h2 class="font-weight-semibold text-6 line-height-3 mb-3"><a href="blog-post.html" class="text-color-dark text-color-hover-primary">Top Camper Trailer Towing Tips</a></h2>
-                            <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque pellentesque tempor tellus eget hendrerit. Morbi id aliquam ligula. Aliquam id dui sem. Proin rhoncus consequat nisl, eu ornare mauris tincidunt vitae. [...]</p>
-
-                            <div class="post-meta">
-                                <span><i class="far fa-user"></i> By <a href="#">John Doe</a> </span>
-                                <span><i class="far fa-folder"></i> <a href="#">Travel</a>, <a href="#">Lifestyle</a> </span>
-                                <span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>
-                                <span class="d-block d-sm-inline-block float-sm-end mt-3 mt-sm-0"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
-                            </div>
-
-                        </div>
-                    </article>
-
-                    <article class="post post-large">
-                        <div class="post-image">
-                            <div class="lightbox" data-plugin-options="{'delegate': 'a', 'type': 'image', 'gallery': {'enabled': true}, 'mainClass': 'mfp-with-zoom', 'zoom': {'enabled': true, 'duration': 300}}">
-                                <div class="row mx-0">
-                                    <div class="col-6 col-md-4 p-0">
-                                        <a href="img/blog/square/blog-13.jpg">
-                                            <span class="thumb-info thumb-info-no-borders thumb-info-centered-icons">
-                                                <span class="thumb-info-wrapper">
-                                                    <img src="img/blog/square/blog-13.jpg" class="img-fluid" alt="Post lightbox image 1" />
-                                                    <span class="thumb-info-action">
-                                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-plus text-dark"></i></span>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <div class="col-6 col-md-4 p-0">
-                                        <a href="img/blog/square/blog-16.jpg">
-                                            <span class="thumb-info thumb-info-no-borders thumb-info-centered-icons">
-                                                <span class="thumb-info-wrapper">
-                                                    <img src="img/blog/square/blog-16.jpg" class="img-fluid" alt="Post lightbox image 2" />
-                                                    <span class="thumb-info-action">
-                                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-plus text-dark"></i></span>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <div class="col-6 col-md-4 p-0">
-                                        <a href="img/blog/square/blog-20.jpg">
-                                            <span class="thumb-info thumb-info-no-borders thumb-info-centered-icons">
-                                                <span class="thumb-info-wrapper">
-                                                    <img src="img/blog/square/blog-20.jpg" class="img-fluid" alt="Post lightbox image 3" />
-                                                    <span class="thumb-info-action">
-                                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-plus text-dark"></i></span>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <div class="col-6 col-md-4 p-0">
-                                        <a href="img/blog/square/blog-23.jpg">
-                                            <span class="thumb-info thumb-info-no-borders thumb-info-centered-icons">
-                                                <span class="thumb-info-wrapper">
-                                                    <img src="img/blog/square/blog-23.jpg" class="img-fluid" alt="Post lightbox image 4" />
-                                                    <span class="thumb-info-action">
-                                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-plus text-dark"></i></span>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <div class="col-6 col-md-4 p-0">
-                                        <a href="img/blog/square/blog-29.jpg">
-                                            <span class="thumb-info thumb-info-no-borders thumb-info-centered-icons">
-                                                <span class="thumb-info-wrapper">
-                                                    <img src="img/blog/square/blog-29.jpg" class="img-fluid" alt="Post lightbox image 5" />
-                                                    <span class="thumb-info-action">
-                                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-plus text-dark"></i></span>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <div class="col-6 col-md-4 p-0">
-                                        <a href="img/blog/square/blog-40.jpg">
-                                            <span class="thumb-info thumb-info-no-borders thumb-info-centered-icons">
-                                                <span class="thumb-info-wrapper">
-                                                    <img src="img/blog/square/blog-40.jpg" class="img-fluid" alt="Post lightbox image 6" />
-                                                    <span class="thumb-info-action">
-                                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-plus text-dark"></i></span>
-                                                    </span>
-                                                </span>
-                                            </span>
-                                        </a>
+                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
+                            <div class="row align-items-center pb-1">
+                                <div class="col-sm-4">
+                                    <a href="blog-post.html">
+                                        <img src="img/blog/default/blog-47.jpg" class="img-fluid border-radius-0" alt="Gadgets That Make Your Smartphone Even Smarter">
+                                    </a>
+                                </div>
+                                <div class="col-sm-8 ps-sm-0">
+                                    <div class="thumb-info-caption-text">
+                                        <div class="d-inline-block text-default text-1 float-none">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                                        </div>
+                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">Gadgets That Make Your Smartphone Even Smarter</a>
+                                        </h4>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </article>
 
-                        <div class="post-date text-1">
-                            <span class="day border-radius-0 text-4 text-dark">8</span>
-                            <span class="month border-radius-0 text-1 bg-color-dark">Jan</span>
-                        </div>
-
-                        <div class="post-content">
-
-                            <h2 class="font-weight-semibold text-6 line-height-3 mb-3"><a href="blog-post.html" class="text-color-dark text-color-hover-primary">10 Best Travel Tips After 5 Years Traveling The World</a></h2>
-                            <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque pellentesque tempor tellus eget hendrerit. Morbi id aliquam ligula. Aliquam id dui sem. Proin rhoncus consequat nisl, eu ornare mauris tincidunt vitae. [...]</p>
-
-                            <div class="post-meta">
-                                <span><i class="far fa-user"></i> By <a href="#">John Doe</a> </span>
-                                <span><i class="far fa-folder"></i> <a href="#">Travel</a>, <a href="#">Lifestyle</a> </span>
-                                <span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>
-                                <span class="d-block d-sm-inline-block float-sm-end mt-3 mt-sm-0"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
+                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
+                            <div class="row align-items-center pb-1">
+                                <div class="col-sm-4">
+                                    <a href="blog-post.html">
+                                        <img src="img/blog/default/blog-68.jpg" class="img-fluid border-radius-0" alt="The best augmented reality smartglasses">
+                                    </a>
+                                </div>
+                                <div class="col-sm-7 ps-sm-0">
+                                    <div class="thumb-info-caption-text">
+                                        <div class="d-inline-block text-default text-1 float-none">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                                        </div>
+                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">The best augmented reality smartglasses</a>
+                                        </h4>
+                                    </div>
+                                </div>
                             </div>
+                        </article>
 
-                        </div>
-                    </article>
-
-                    <article class="post post-large">
-                        <div class="post-image">
-                            <div class="ratio ratio-16x9">
-                                <iframe  src="https://player.vimeo.com/video/45830194?color=ffffff&title=0&byline=0&portrait=0&badge=0" width="640" height="360" allowfullscreen></iframe>
+                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
+                            <div class="row align-items-center pb-1">
+                                <div class="col-sm-4">
+                                    <a href="blog-post.html">
+                                        <img src="img/blog/default/blog-67.jpg" class="img-fluid border-radius-0" alt="Why should I buy a smartwatch?">
+                                    </a>
+                                </div>
+                                <div class="col-sm-7 ps-sm-0">
+                                    <div class="thumb-info-caption-text">
+                                        <div class="d-inline-block text-default text-1 float-none">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                                        </div>
+                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">Why should I buy a smartwatch?</a>
+                                        </h4>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </article>
 
-                        <div class="post-date text-1">
-                            <span class="day border-radius-0 text-4 text-dark">7</span>
-                            <span class="month border-radius-0 text-1 bg-color-dark">Jan</span>
-                        </div>
+                    </div>
+                </div>
 
-                        <div class="post-content">
+                <div class="heading heading-border heading-middle-border">
+                    <h3 class="text-4"><strong class="font-weight-bold text-1 px-3 text-light py-2 bg-tertiary">Lifestyle</strong></h3>
+                </div>
 
-                            <h2 class="font-weight-semibold text-6 line-height-3 mb-3"><a href="blog-post.html" class="text-color-dark text-color-hover-primary">7 Steps to Learn How to Play Piano</a></h2>
-                            <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque pellentesque tempor tellus eget hendrerit. Morbi id aliquam ligula. Aliquam id dui sem. Proin rhoncus consequat nisl, eu ornare mauris tincidunt vitae. [...]</p>
+                <div class="row pb-1">
 
-                            <div class="post-meta">
-                                <span><i class="far fa-user"></i> By <a href="#">John Doe</a> </span>
-                                <span><i class="far fa-folder"></i> <a href="#">Travel</a>, <a href="#">Lifestyle</a> </span>
-                                <span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>
-                                <span class="d-block d-sm-inline-block float-sm-end mt-3 mt-sm-0"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
+                    <div class="col-lg-6 mb-4 pb-1">
+                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-2 mb-2">
+                            <div class="row">
+                                <div class="col">
+                                    <a href="blog-post.html">
+                                        <img src="img/blog/default/blog-49.jpg" class="img-fluid border-radius-0" alt="The Best Way to Ride a Motorcycle">
+                                    </a>
+                                </div>
                             </div>
-
-                        </div>
-                    </article>
-
-                    <article class="post post-large">
-                        <div class="post-image">
-                            <div class="ratio ratio-16x9">
-                                <video id="blogPostVideo" width="100%" height="100%" muted loop preload="metadata" poster="video/memory-of-a-woman.jpg">
-                                      <source src="video/memory-of-a-woman.webm" type="video/webm">
-                                      <source src="video/memory-of-a-woman.mp4" type="video/mp4">
-                                </video>
-                                <a href="#" class="position-absolute top-50pct left-50pct transform3dxy-n50 bg-light rounded-circle d-flex align-items-center justify-content-center text-decoration-none bg-color-hover-primary text-color-hover-light play-button-lg" data-trigger-play-video="#blogPostVideo" data-trigger-play-video-remove="yes">
-                                    <i class="fas fa-play text-5"></i>
-                                </a>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="thumb-info-caption-text">
+                                        <div class="d-inline-block text-default text-1 mt-2 float-none">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                                        </div>
+                                        <h4 class="d-block line-height-2 text-4 text-dark font-weight-bold mb-0">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">The Best Way to Ride a Motorcycle</a>
+                                        </h4>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </article>
+                    </div>
 
-                        <div class="post-date text-1">
-                            <span class="day border-radius-0 text-4 text-dark">6</span>
-                            <span class="month border-radius-0 text-1 bg-color-dark">Jan</span>
-                        </div>
+                    <div class="col-lg-6">
 
-                        <div class="post-content">
-
-                            <h2 class="font-weight-semibold text-6 line-height-3 mb-3"><a href="blog-post.html" class="text-color-dark text-color-hover-primary">8 Amazing Things You Won't Believe Actually Exist In Nature</a></h2>
-                            <p>Euismod atras vulputate iltricies etri elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla nunc dui, tristique in semper vel, congue sed ligula. Nam dolor ligula, faucibus id sodales in, auctor fringilla libero. Pellentesque pellentesque tempor tellus eget hendrerit. Morbi id aliquam ligula. Aliquam id dui sem. Proin rhoncus consequat nisl, eu ornare mauris tincidunt vitae. [...]</p>
-
-                            <div class="post-meta">
-                                <span><i class="far fa-user"></i> By <a href="#">John Doe</a> </span>
-                                <span><i class="far fa-folder"></i> <a href="#">Lifestyle</a>, <a href="#">Travel</a> </span>
-                                <span><i class="far fa-comments"></i> <a href="#">12 Comments</a></span>
-                                <span class="d-block d-sm-inline-block float-sm-end mt-3 mt-sm-0"><a href="blog-post.html" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
+                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
+                            <div class="row align-items-center pb-1">
+                                <div class="col-sm-4">
+                                    <a href="blog-post.html">
+                                        <img src="img/blog/default/blog-50.jpg" class="img-fluid border-radius-0" alt="5 Fun Things to Do at the Beach">
+                                    </a>
+                                </div>
+                                <div class="col-sm-7 ps-sm-0">
+                                    <div class="thumb-info-caption-text">
+                                        <div class="d-inline-block text-default text-1 float-none">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                                        </div>
+                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">5 Fun Things to Do at the Beach</a>
+                                        </h4>
+                                    </div>
+                                </div>
                             </div>
+                        </article>
 
-                        </div>
-                    </article>
+                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
+                            <div class="row align-items-center pb-1">
+                                <div class="col-sm-4">
+                                    <a href="blog-post.html">
+                                        <img src="img/blog/default/blog-51.jpg" class="img-fluid border-radius-0" alt="Amazingly Fresh Fruit And Herb Drinks For Summer">
+                                    </a>
+                                </div>
+                                <div class="col-sm-7 ps-sm-0">
+                                    <div class="thumb-info-caption-text">
+                                        <div class="d-inline-block text-default text-1 float-none">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                                        </div>
+                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">Amazingly Fresh Fruit And Herb Drinks For Summer</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
 
-                    <ul class="pagination float-end">
-                        <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-left"></i></a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
-                    </ul>
+                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
+                            <div class="row align-items-center pb-1">
+                                <div class="col-sm-4">
+                                    <a href="blog-post.html">
+                                        <img src="img/blog/default/blog-52.jpg" class="img-fluid border-radius-0" alt="The 20 Best Appetizers with 5 Ingredients">
+                                    </a>
+                                </div>
+                                <div class="col-sm-7 ps-sm-0">
+                                    <div class="thumb-info-caption-text">
+                                        <div class="d-inline-block text-default text-1 float-none">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                                        </div>
+                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">The 20 Best Appetizers with 5 Ingredients</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+
+                <div class="heading heading-border heading-middle-border">
+                    <h3 class="text-4"><strong class="font-weight-bold text-1 px-3 text-light py-2 bg-quaternary">Travel</strong></h3>
+                </div>
+
+                <div class="row pb-1">
+
+                    <div class="col-lg-6 mb-4 pb-1">
+                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-2 mb-2">
+                            <div class="row">
+                                <div class="col">
+                                    <a href="blog-post.html">
+                                        <img src="img/blog/default/blog-53.jpg" class="img-fluid border-radius-0" alt="6 Tips to Memorize Before Your Next Flight">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="thumb-info-caption-text">
+                                        <div class="d-inline-block text-default text-1 mt-2 float-none">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                                        </div>
+                                        <h4 class="d-block line-height-2 text-4 text-dark font-weight-bold mb-0">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">6 Tips to Memorize Before Your Next Flight</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-lg-6">
+
+                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
+                            <div class="row align-items-center pb-1">
+                                <div class="col-sm-4">
+                                    <a href="blog-post.html">
+                                        <img src="img/blog/default/blog-54.jpg" class="img-fluid border-radius-0" alt="How to Make Friends as a Grown-Up">
+                                    </a>
+                                </div>
+                                <div class="col-sm-7 ps-sm-0">
+                                    <div class="thumb-info-caption-text">
+                                        <div class="d-inline-block text-default text-1 float-none">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                                        </div>
+                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">How to Make Friends as a Grown-Up</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
+                            <div class="row align-items-center pb-1">
+                                <div class="col-sm-4">
+                                    <a href="blog-post.html">
+                                        <img src="img/blog/default/blog-55.jpg" class="img-fluid border-radius-0" alt="Simple Ways to Have a Pretty Face">
+                                    </a>
+                                </div>
+                                <div class="col-sm-7 ps-sm-0">
+                                    <div class="thumb-info-caption-text">
+                                        <div class="d-inline-block text-default text-1 float-none">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                                        </div>
+                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">Simple Ways to Have a Pretty Face</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
+                            <div class="row align-items-center pb-1">
+                                <div class="col-sm-4">
+                                    <a href="blog-post.html">
+                                        <img src="img/blog/default/blog-56.jpg" class="img-fluid border-radius-0" alt="Ranking the greatest players in basketball">
+                                    </a>
+                                </div>
+                                <div class="col-sm-7 ps-sm-0">
+                                    <div class="thumb-info-caption-text">
+                                        <div class="d-inline-block text-default text-1 float-none">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                                        </div>
+                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">Ranking the greatest players in basketball</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+
+                <div class="text-center py-3 mb-4">
+                    <a href="http://themeforest.net/item/porto-responsive-html5-template/4106987" target="_blank" class="d-block">
+                        <img alt="Porto" class="img-fluid ps-3" src="img/blog/blog-ad-3.jpg" />
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <h3 class="font-weight-bold text-3 pt-1">Featured Posts</h3>
+
+                <div class="pb-2">
+
+                    <div class="mb-4 pb-2">
+                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-2 mb-2">
+                            <div class="row">
+                                <div class="col">
+                                    <a href="blog-post.html">
+                                        <img src="img/blog/default/blog-65.jpg" class="img-fluid border-radius-0" alt="Main Reasons To Stop Texting And Driving">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="thumb-info-caption-text">
+                                        <div class="d-inline-block text-default text-1 mt-2 float-none">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                                        </div>
+                                        <h4 class="d-block line-height-2 text-4 text-dark font-weight-bold mb-0">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">Main Reasons To Stop Texting And Driving</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="mb-4 pb-2">
+                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-2 mb-2">
+                            <div class="row">
+                                <div class="col">
+                                    <a href="blog-post.html">
+                                        <img src="img/blog/default/blog-66.jpg" class="img-fluid border-radius-0" alt="Tips to Help You Quickly Prepare your Lunch">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="thumb-info-caption-text">
+                                        <div class="d-inline-block text-default text-1 mt-2 float-none">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                                        </div>
+                                        <h4 class="d-block line-height-2 text-4 text-dark font-weight-bold mb-0">
+                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">Tips to Help You Quickly Prepare your Lunch</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
 
                 </div>
-            </div>
-            <div class="col-md-3">
-                <aside class="sidebar pb-4" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
+
+                <aside class="sidebar pb-4">
                     <h5 class="font-weight-semi-bold pt-4">Photos from Instagram</h5>
                     <div class="instagram-feed" data-type="nomargins" class="mb-4 pb-1"></div>
                     <h5 class="font-weight-semi-bold pt-4 mb-2">Tags</h5>
@@ -543,6 +547,33 @@
                     <h5 class="font-weight-semi-bold pt-4">Find us on Facebook</h5>
                     <div class="fb-page" data-href="https://www.facebook.com/OklerThemes/" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/OklerThemes/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/OklerThemes/">Okler Themes</a></blockquote></div>
                 </aside>
+
+                <h5 class="font-weight-semi-bold pt-1">Recent Comments</h5>
+
+                <ul class="list-unstyled mb-4 pb-1 pt-2">
+
+                    <li class="pb-3 text-2">
+                        <a href="#" rel="external nofollow" class="font-weight-bold text-dark">John Doe</a> on <a href="blog-post.html" class="text-dark">Main Reasons To Stop Texting And Driving</a>
+                    </li>
+
+                    <li class="pb-3 text-2">
+                        <a href="#" rel="external nofollow" class="font-weight-bold text-dark">John Doe</a> on <a href="blog-post.html" class="text-dark">Tips to Help You Quickly Prepare your Lunch</a>
+                    </li>
+
+                    <li class="pb-3 text-2">
+                        <a href="#" rel="external nofollow" class="font-weight-bold text-dark">John Doe</a> on <a href="blog-post.html" class="text-dark">Why should I buy a smartwatch?</a>
+                    </li>
+
+                    <li class="pb-3 text-2">
+                        <a href="#" rel="external nofollow" class="font-weight-bold text-dark">John Doe</a> on <a href="blog-post.html" class="text-dark">The best augmented reality smartglasses</a>
+                    </li>
+
+                    <li class="pb-3 text-2">
+                        <a href="#" rel="external nofollow" class="font-weight-bold text-dark">John Doe</a> on <a href="blog-post.html" class="text-dark">12 Healthiest Foods to Eat for Breakfast</a>
+                    </li>
+
+                </ul>
+
             </div>
         </div>
 

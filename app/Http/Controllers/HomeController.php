@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Models\Series;
+use App\Models\Category;
 
 class HomeController extends Controller
 {
@@ -40,6 +41,7 @@ class HomeController extends Controller
             'title' => "Bienvenue sur le site de streaming",
             'movies' => Movie::with('category', 'artworkInfo')->latest()->get(),
             'series' => Series::with('category', 'artworkInfo')->latest()->get(),
+            'categories' => Category::all(),
             'lastMovies' => $lastMovies,
             'topMovies' => $topMovies,
             'lastSeries' => $lastSeries,
