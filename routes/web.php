@@ -25,6 +25,7 @@ Route::group(['middleware' => 'guest'], function(){
     Route::get('/', [GuestHomeController::class,'welcome'])->name('welcome');
     Route::get('/movie', [GuestHomeController::class,'movie'])->name('movie');
     Route::get('/movie/{slug}', [GuestHomeController::class,'showMovie'])->name('movie.show');
+    Route::get('/categorie/{name}', [GuestHomeController::class,'showCategory'])->name('category.show');
     Route::get('/serie', [GuestHomeController::class,'serie'])->name('serie');
     Route::get('/serie/{id}', [GuestHomeController::class,'showSerie'])->name('serie.show');
     Route::get('/season/{id}', [GuestHomeController::class,'showSeason'])->name('season.show');

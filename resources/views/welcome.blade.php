@@ -93,7 +93,9 @@
                                     </a>
                                 </h4>
                                 <div class="post-meta">
-                                    January 12, 2020
+                                    @if(optional($lastSerie->artworkInfo)->production_date)
+                                        {{optional($lastSerie->artworkInfo)->production_date->format('d-m-Y')}}
+                                    @endif
                                 </div>
                             </div>
                         </li>
@@ -164,7 +166,7 @@
                     <div class="owl-carousel owl-theme nav-dark stage-margin nav-style-1 m-0" data-plugin-options="{'items': 6, 'margin': 5, 'loop': false, 'nav': true, 'dots': false, 'stagePadding': 40}">
                         @foreach($categories as $category)
                         <div class="px-3">
-                            <a href="#" class="btn btn-dark w-100 py-3 rounded-0 text-2 text-uppercase font-weight-bold">
+                            <a href="{{Route('category.show', $category->name)}}" class="btn btn-dark w-100 py-3 rounded-0 text-2 text-uppercase font-weight-bold">
                                 {{$category->name}}
                             </a>
                         </div>
@@ -182,7 +184,7 @@
             <div class="col-md-9">
 
                 <div class="heading heading-border heading-middle-border">
-                    <h3 class="text-4"><strong class="font-weight-bold text-1 px-3 text-light py-2 bg-secondary">Gadgets</strong></h3>
+                    <h3 class="text-4"><strong class="font-weight-bold text-1 px-3 text-light py-2 bg-secondary">Derniers Films</strong></h3>
                 </div>
 
                 <div class="row pb-1">
@@ -191,8 +193,8 @@
                         <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-2 mb-2">
                             <div class="row">
                                 <div class="col">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/default/blog-67.jpg" class="img-fluid border-radius-0" alt="Why should I buy a smartwatch?">
+                                    <a href="{{Route('movie.show', optional($lastesMovies[0])->slug)}}">
+                                        <img src="{{asset('storage/cover/'.optional($lastesMovies[0]->artworkInfo)->cover)}}" class="img-fluid border-radius-0" alt="cover" style="height: 300px; width:900px">
                                     </a>
                                 </div>
                             </div>
@@ -200,10 +202,14 @@
                                 <div class="col">
                                     <div class="thumb-info-caption-text">
                                         <div class="d-inline-block text-default text-1 mt-2 float-none">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                                            <a href="{{Route('movie.show', optional($lastesMovies[0])->slug)}}" class="text-decoration-none text-color-default">
+                                                {{optional($lastesMovies[0])->artworkInfo->production_date->format('d-m-Y')}}
+                                            </a>
                                         </div>
                                         <h4 class="d-block line-height-2 text-4 text-dark font-weight-bold mb-0">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">Why should I buy a smartwatch?</a>
+                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">
+                                                {{optional($lastesMovies[0])->title}}
+                                            </a>
                                         </h4>
                                     </div>
                                 </div>
@@ -212,72 +218,37 @@
                     </div>
 
                     <div class="col-lg-6">
-
-                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
-                            <div class="row align-items-center pb-1">
-                                <div class="col-sm-4">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/default/blog-47.jpg" class="img-fluid border-radius-0" alt="Gadgets That Make Your Smartphone Even Smarter">
-                                    </a>
-                                </div>
-                                <div class="col-sm-8 ps-sm-0">
-                                    <div class="thumb-info-caption-text">
-                                        <div class="d-inline-block text-default text-1 float-none">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                        @foreach($lastesMovies as $lastesMovie)
+                            @continue($loop->first)
+                            <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
+                                <div class="row align-items-center pb-1">
+                                    <div class="col-sm-4">
+                                        <a href="{{Route('movie.show', optional($lastesMovie)->slug)}}">
+                                            <img src="{{asset('storage/cover/'.optional($lastesMovie->artworkInfo)->cover)}}" class="img-fluid border-radius-0" alt="Cover" style="height: 90px">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-8 ps-sm-0">
+                                        <div class="thumb-info-caption-text">
+                                            <div class="d-inline-block text-default text-1 float-none">
+                                                <a href="{{Route('movie.show', optional($lastesMovie)->slug)}}" class="text-decoration-none text-color-default">
+                                                    {{optional($lastesMovie)->artworkInfo->production_date->format('d-m-Y')}}
+                                                </a>
+                                            </div>
+                                            <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
+                                                <a href="{{Route('movie.show', optional($lastesMovie)->slug)}}" class="text-decoration-none text-color-dark text-color-hover-primary">
+                                                    {{optional($lastesMovie)->title}}
+                                                </a>
+                                            </h4>
                                         </div>
-                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">Gadgets That Make Your Smartphone Even Smarter</a>
-                                        </h4>
                                     </div>
                                 </div>
-                            </div>
-                        </article>
-
-                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
-                            <div class="row align-items-center pb-1">
-                                <div class="col-sm-4">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/default/blog-68.jpg" class="img-fluid border-radius-0" alt="The best augmented reality smartglasses">
-                                    </a>
-                                </div>
-                                <div class="col-sm-7 ps-sm-0">
-                                    <div class="thumb-info-caption-text">
-                                        <div class="d-inline-block text-default text-1 float-none">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
-                                        </div>
-                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">The best augmented reality smartglasses</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
-                            <div class="row align-items-center pb-1">
-                                <div class="col-sm-4">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/default/blog-67.jpg" class="img-fluid border-radius-0" alt="Why should I buy a smartwatch?">
-                                    </a>
-                                </div>
-                                <div class="col-sm-7 ps-sm-0">
-                                    <div class="thumb-info-caption-text">
-                                        <div class="d-inline-block text-default text-1 float-none">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
-                                        </div>
-                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">Why should I buy a smartwatch?</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
+                            </article>
+                        @endforeach
                     </div>
                 </div>
 
                 <div class="heading heading-border heading-middle-border">
-                    <h3 class="text-4"><strong class="font-weight-bold text-1 px-3 text-light py-2 bg-tertiary">Lifestyle</strong></h3>
+                    <h3 class="text-4"><strong class="font-weight-bold text-1 px-3 text-light py-2 bg-quaternary">Dernieres Séries</strong></h3>
                 </div>
 
                 <div class="row pb-1">
@@ -286,8 +257,8 @@
                         <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-2 mb-2">
                             <div class="row">
                                 <div class="col">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/default/blog-49.jpg" class="img-fluid border-radius-0" alt="The Best Way to Ride a Motorcycle">
+                                    <a href="{{Route('serie.show', optional($lastesSeries[0])->slug)}}">
+                                        <img src="{{asset('storage/cover/'.optional($lastesSeries[0]->artworkInfo)->cover)}}" class="img-fluid border-radius-0" alt="cover" style="height: 300px; width:900px">
                                     </a>
                                 </div>
                             </div>
@@ -295,10 +266,14 @@
                                 <div class="col">
                                     <div class="thumb-info-caption-text">
                                         <div class="d-inline-block text-default text-1 mt-2 float-none">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                                            <a href="{{Route('serie.show', optional($lastesSeries[0])->slug)}}" class="text-decoration-none text-color-default">
+                                                {{optional($lastesSeries[0])->artworkInfo->production_date->format('d-m-Y')}}
+                                            </a>
                                         </div>
                                         <h4 class="d-block line-height-2 text-4 text-dark font-weight-bold mb-0">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">The Best Way to Ride a Motorcycle</a>
+                                            <a href="{{Route('serie.show', optional($lastesSeries[0])->slug)}}" class="text-decoration-none text-color-dark text-color-hover-primary">
+                                                {{optional($lastesSeries[0])->title}}
+                                            </a>
                                         </h4>
                                     </div>
                                 </div>
@@ -307,273 +282,77 @@
                     </div>
 
                     <div class="col-lg-6">
-
-                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
-                            <div class="row align-items-center pb-1">
-                                <div class="col-sm-4">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/default/blog-50.jpg" class="img-fluid border-radius-0" alt="5 Fun Things to Do at the Beach">
-                                    </a>
-                                </div>
-                                <div class="col-sm-7 ps-sm-0">
-                                    <div class="thumb-info-caption-text">
-                                        <div class="d-inline-block text-default text-1 float-none">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                        @foreach($lastesSeries as $lastesSerie)
+                            @continue($loop->first)
+                            <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
+                                <div class="row align-items-center pb-1">
+                                    <div class="col-sm-4">
+                                        <a href="{{Route('serie.show', optional($lastesSerie)->slug)}}">
+                                            <img src="{{asset('storage/cover/'.optional($lastesSerie->artworkInfo)->cover)}}" class="img-fluid border-radius-0" alt="Cover" style="height: 90px">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-8 ps-sm-0">
+                                        <div class="thumb-info-caption-text">
+                                            <div class="d-inline-block text-default text-1 float-none">
+                                                <a href="{{Route('serie.show', optional($lastesSerie)->slug)}}" class="text-decoration-none text-color-default">
+                                                    @if(optional($lastesSerie->artworkInfo)->production_date)
+                                                        {{optional($lastesSerie->artworkInfo)->production_date->format('d-m-Y')}}   
+                                                    @endif
+                                                </a>
+                                            </div>
+                                            <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
+                                                <a href="{{Route('serie.show', optional($lastesSerie)->slug)}}" class="text-decoration-none text-color-dark text-color-hover-primary">
+                                                    {{optional($lastesSerie)->title}}
+                                                </a>
+                                            </h4>
                                         </div>
-                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">5 Fun Things to Do at the Beach</a>
-                                        </h4>
                                     </div>
                                 </div>
-                            </div>
-                        </article>
-
-                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
-                            <div class="row align-items-center pb-1">
-                                <div class="col-sm-4">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/default/blog-51.jpg" class="img-fluid border-radius-0" alt="Amazingly Fresh Fruit And Herb Drinks For Summer">
-                                    </a>
-                                </div>
-                                <div class="col-sm-7 ps-sm-0">
-                                    <div class="thumb-info-caption-text">
-                                        <div class="d-inline-block text-default text-1 float-none">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
-                                        </div>
-                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">Amazingly Fresh Fruit And Herb Drinks For Summer</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
-                            <div class="row align-items-center pb-1">
-                                <div class="col-sm-4">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/default/blog-52.jpg" class="img-fluid border-radius-0" alt="The 20 Best Appetizers with 5 Ingredients">
-                                    </a>
-                                </div>
-                                <div class="col-sm-7 ps-sm-0">
-                                    <div class="thumb-info-caption-text">
-                                        <div class="d-inline-block text-default text-1 float-none">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
-                                        </div>
-                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">The 20 Best Appetizers with 5 Ingredients</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
+                            </article>
+                        @endforeach
                     </div>
-                </div>
-
-                <div class="heading heading-border heading-middle-border">
-                    <h3 class="text-4"><strong class="font-weight-bold text-1 px-3 text-light py-2 bg-quaternary">Travel</strong></h3>
-                </div>
-
-                <div class="row pb-1">
-
-                    <div class="col-lg-6 mb-4 pb-1">
-                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-2 mb-2">
-                            <div class="row">
-                                <div class="col">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/default/blog-53.jpg" class="img-fluid border-radius-0" alt="6 Tips to Memorize Before Your Next Flight">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="thumb-info-caption-text">
-                                        <div class="d-inline-block text-default text-1 mt-2 float-none">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
-                                        </div>
-                                        <h4 class="d-block line-height-2 text-4 text-dark font-weight-bold mb-0">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">6 Tips to Memorize Before Your Next Flight</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-lg-6">
-
-                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
-                            <div class="row align-items-center pb-1">
-                                <div class="col-sm-4">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/default/blog-54.jpg" class="img-fluid border-radius-0" alt="How to Make Friends as a Grown-Up">
-                                    </a>
-                                </div>
-                                <div class="col-sm-7 ps-sm-0">
-                                    <div class="thumb-info-caption-text">
-                                        <div class="d-inline-block text-default text-1 float-none">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
-                                        </div>
-                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">How to Make Friends as a Grown-Up</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
-                            <div class="row align-items-center pb-1">
-                                <div class="col-sm-4">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/default/blog-55.jpg" class="img-fluid border-radius-0" alt="Simple Ways to Have a Pretty Face">
-                                    </a>
-                                </div>
-                                <div class="col-sm-7 ps-sm-0">
-                                    <div class="thumb-info-caption-text">
-                                        <div class="d-inline-block text-default text-1 float-none">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
-                                        </div>
-                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">Simple Ways to Have a Pretty Face</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-4 mb-2">
-                            <div class="row align-items-center pb-1">
-                                <div class="col-sm-4">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/default/blog-56.jpg" class="img-fluid border-radius-0" alt="Ranking the greatest players in basketball">
-                                    </a>
-                                </div>
-                                <div class="col-sm-7 ps-sm-0">
-                                    <div class="thumb-info-caption-text">
-                                        <div class="d-inline-block text-default text-1 float-none">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
-                                        </div>
-                                        <h4 class="d-block pb-2 line-height-2 text-3 text-dark font-weight-bold mb-0">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">Ranking the greatest players in basketball</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                    </div>
-                </div>
-
-                <div class="text-center py-3 mb-4">
-                    <a href="http://themeforest.net/item/porto-responsive-html5-template/4106987" target="_blank" class="d-block">
-                        <img alt="Porto" class="img-fluid ps-3" src="img/blog/blog-ad-3.jpg" />
-                    </a>
                 </div>
 
             </div>
 
             <div class="col-md-3">
 
-                <h3 class="font-weight-bold text-3 pt-1">Featured Posts</h3>
+                <h3 class="font-weight-bold text-3 pt-1">Les Classiques</h3>
 
                 <div class="pb-2">
-
-                    <div class="mb-4 pb-2">
-                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-2 mb-2">
-                            <div class="row">
-                                <div class="col">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/default/blog-65.jpg" class="img-fluid border-radius-0" alt="Main Reasons To Stop Texting And Driving">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="thumb-info-caption-text">
-                                        <div class="d-inline-block text-default text-1 mt-2 float-none">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
-                                        </div>
-                                        <h4 class="d-block line-height-2 text-4 text-dark font-weight-bold mb-0">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">Main Reasons To Stop Texting And Driving</a>
-                                        </h4>
+                    @foreach($classicMovies as $classicMovie)
+                        <div class="mb-4 pb-2">
+                            <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-2 mb-2">
+                                <div class="row">
+                                    <div class="col">
+                                        <a href="{{Route('serie.show', optional($classicMovie)->slug)}}">
+                                            <img src="{{asset('storage/cover/'.optional($classicMovie->artworkInfo)->cover)}}" class="img-fluid border-radius-0" alt="Cover" style="height: 200px">
+                                        </a>
                                     </div>
                                 </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="mb-4 pb-2">
-                        <article class="thumb-info thumb-info-no-zoom bg-transparent border-radius-0 pb-2 mb-2">
-                            <div class="row">
-                                <div class="col">
-                                    <a href="blog-post.html">
-                                        <img src="img/blog/default/blog-66.jpg" class="img-fluid border-radius-0" alt="Tips to Help You Quickly Prepare your Lunch">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="thumb-info-caption-text">
-                                        <div class="d-inline-block text-default text-1 mt-2 float-none">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-default">January 12, 2020</a>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="thumb-info-caption-text">
+                                            <div class="d-inline-block text-default text-1 mt-2 float-none">
+                                                <a href="{{Route('serie.show', optional($classicMovie)->slug)}}" class="text-decoration-none text-color-default">
+                                                    @if(optional($classicMovie->artworkInfo)->production_date)
+                                                        {{optional($classicMovie->artworkInfo)->production_date->format('d-m-Y')}}
+                                                    @endif
+                                                </a>
+                                            </div>
+                                            <h4 class="d-block line-height-2 text-4 text-dark font-weight-bold mb-0">
+                                                <a href="{{Route('serie.show', optional($classicMovie)->slug)}}" class="text-decoration-none text-color-dark text-color-hover-primary">
+                                                    {{optional($classicMovie)->title}}
+                                                </a>
+                                            </h4>
                                         </div>
-                                        <h4 class="d-block line-height-2 text-4 text-dark font-weight-bold mb-0">
-                                            <a href="blog-post.html" class="text-decoration-none text-color-dark text-color-hover-primary">Tips to Help You Quickly Prepare your Lunch</a>
-                                        </h4>
                                     </div>
                                 </div>
-                            </div>
-                        </article>
-                    </div>
+                            </article>
+                        </div>
+                    @endforeach
 
                 </div>
-
-                <aside class="sidebar pb-4">
-                    <h5 class="font-weight-semi-bold pt-4">Photos from Instagram</h5>
-                    <div class="instagram-feed" data-type="nomargins" class="mb-4 pb-1"></div>
-                    <h5 class="font-weight-semi-bold pt-4 mb-2">Tags</h5>
-                    <div class="mb-3 pb-1">
-                        <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">design</span></a>
-                        <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">brands</span></a>
-                        <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">video</span></a>
-                        <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">business</span></a>
-                        <a href="#"><span class="badge badge-dark badge-sm rounded-pill text-uppercase px-2 py-1 me-1">travel</span></a>
-                    </div>
-                    <a href="http://themeforest.net/item/porto-responsive-html5-template/4106987" target="_blank" class="my-4 pt-3 d-block">
-                        <img alt="Porto" class="img-fluid" src="img/blog/blog-ad-1-medium.jpg" />
-                    </a>
-                    <h5 class="font-weight-semi-bold pt-4">Find us on Facebook</h5>
-                    <div class="fb-page" data-href="https://www.facebook.com/OklerThemes/" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/OklerThemes/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/OklerThemes/">Okler Themes</a></blockquote></div>
-                </aside>
-
-                <h5 class="font-weight-semi-bold pt-1">Recent Comments</h5>
-
-                <ul class="list-unstyled mb-4 pb-1 pt-2">
-
-                    <li class="pb-3 text-2">
-                        <a href="#" rel="external nofollow" class="font-weight-bold text-dark">John Doe</a> on <a href="blog-post.html" class="text-dark">Main Reasons To Stop Texting And Driving</a>
-                    </li>
-
-                    <li class="pb-3 text-2">
-                        <a href="#" rel="external nofollow" class="font-weight-bold text-dark">John Doe</a> on <a href="blog-post.html" class="text-dark">Tips to Help You Quickly Prepare your Lunch</a>
-                    </li>
-
-                    <li class="pb-3 text-2">
-                        <a href="#" rel="external nofollow" class="font-weight-bold text-dark">John Doe</a> on <a href="blog-post.html" class="text-dark">Why should I buy a smartwatch?</a>
-                    </li>
-
-                    <li class="pb-3 text-2">
-                        <a href="#" rel="external nofollow" class="font-weight-bold text-dark">John Doe</a> on <a href="blog-post.html" class="text-dark">The best augmented reality smartglasses</a>
-                    </li>
-
-                    <li class="pb-3 text-2">
-                        <a href="#" rel="external nofollow" class="font-weight-bold text-dark">John Doe</a> on <a href="blog-post.html" class="text-dark">12 Healthiest Foods to Eat for Breakfast</a>
-                    </li>
-
-                </ul>
-
             </div>
         </div>
 
