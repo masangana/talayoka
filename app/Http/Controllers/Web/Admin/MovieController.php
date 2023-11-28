@@ -69,4 +69,14 @@ class MovieController extends Controller
 
         return redirect()->back()->with('success', 'Movie created successfully');
     }
+
+    public function edit($id){
+        return redirect()->back();
+        $movie = Movie::findOrFail($id);
+        return view('admin.movie.edit', [
+            'title' => "Modifier le film",
+            'movie' => $movie,
+            'categories' => Category::all(),
+        ]);
+    }
 }
