@@ -77,7 +77,7 @@
                   <div class="form-floating">
                     <input type="file" class="form-control" name="cover">
                   </div>
-              </div>
+                </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary">Submit</button>
                   <button type="reset" class="btn btn-secondary">Reset</button>
@@ -90,12 +90,51 @@
       </div>
 
       <div class="col-lg-6">
+        <!-- 
         <div class="card">
           <br>
           <div class="card-body">
             @if(optional($serie->artworkInfo)->cover)
               <img src="{{asset('storage/cover/'.$serie->artworkInfo->cover)}}" alt="Cover" srcset="" style="width:400px;height:250px; align: center">
             @endif
+          </div>
+        </div>
+        -->
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Ajouter une Saison</h5>
+            <form class="row g-3">
+              <div class="col-12">
+                <label for="inputNanme4" class="form-label">Titre de la Saison</label>
+                <input type="text" class="form-control" id="inputNanme4" name="title">
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Ajouter un épisode</h5>
+
+            <!-- Vertical Form -->
+            <form class="row g-3">
+              <div class="col-12">
+                <label for="inputNanme4" class="form-label">Titre</label>
+                <input name="title" type="text" class="form-control" id="inputNanme4">
+              </div>
+              <div class="col-12">
+                <label for="inputAddress" class="form-label">Description</label>
+                <textarea class="form-control" placeholder="Description" id="floatingTextarea" style="height: 100px;" name="description"></textarea>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form><!-- Vertical Form -->
+
           </div>
         </div>
       </div>
