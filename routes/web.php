@@ -9,6 +9,7 @@ use App\Http\Controllers\Web\Admin\MovieController as AdminMovieController;
 use App\Http\Controllers\HomeController as GuestHomeController;
 use App\Http\Controllers\Web\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\Web\User\SerieController as UserSerieController;
+use App\Http\Controllers\Web\User\MovieController as UserMovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +25,8 @@ use App\Http\Controllers\Web\User\SerieController as UserSerieController;
 
 Route::group(['middleware' => 'guest'], function(){
     Route::get('/', [GuestHomeController::class,'welcome'])->name('welcome');
-    Route::get('/movies', [GuestHomeController::class,'index'])->name('movie.index');
-    Route::get('/movie/{slug}', [GuestHomeController::class,'showMovie'])->name('movie.show');
+    Route::get('/movies', [UserMovieController::class,'index'])->name('movie.index');
+    Route::get('/movie/{slug}', [UserMovieController::class,'showMovie'])->name('movie.show');
     Route::get('/categorie/{name}', [GuestHomeController::class,'showCategory'])->name('category.show');
     Route::get('/series', [UserSerieController::class,'index'])->name('serie.index');
     Route::get('/serie/{slug}', [UserSerieController::class,'show'])->name('serie.show');
