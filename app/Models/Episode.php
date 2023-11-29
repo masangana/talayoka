@@ -15,4 +15,9 @@ class Episode extends Model
         'comment',
         'video_link',
     ];
+
+    public function season(){
+        return $this->belongsTo(Season::class)->with('series');
+    }
+
 }

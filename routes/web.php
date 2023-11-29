@@ -30,7 +30,7 @@ Route::group(['middleware' => 'guest'], function(){
     Route::get('/series', [UserSerieController::class,'index'])->name('serie.index');
     Route::get('/serie/{slug}', [UserSerieController::class,'show'])->name('serie.show');
     Route::get('/season/{id}', [GuestHomeController::class,'showSeason'])->name('season.show');
-    Route::get('/episode/{id}', [GuestHomeController::class,'showEpisode'])->name('episode.show');
+    Route::get('/serie/{slug}/season/{title}/episode/{id}', [UserSerieController::class,'showEpisode'])->name('episode.show');
     Route::get('/search', [GuestHomeController::class,'search'])->name('search');
 });
 
