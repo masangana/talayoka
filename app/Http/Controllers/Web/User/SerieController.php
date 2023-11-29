@@ -17,7 +17,6 @@ class SerieController extends Controller
     }
     
     public function show($slug){
-        //return $slug;
         $serie = Series::with('category', 'artworkInfo', 'seasons')->where('slug', $slug)->firstOrFail();
 
         return view('user.serie.show', [
@@ -29,7 +28,6 @@ class SerieController extends Controller
     }
 
     public function showEpisode($slug, $title, $id){
-        //return $id;
         $serie = Series::with('category', 'artworkInfo', 'seasons')->where('slug', $slug)->firstOrFail();
         $episode = Episode::with('season')->findOrFail($id);
         return view('user.serie.show', [
