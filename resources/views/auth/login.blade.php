@@ -38,6 +38,12 @@
                             <button type="submit" class="btn btn-dark btn-modern w-100 text-uppercase rounded-0 font-weight-bold text-3 py-3" data-loading-text="Loading...">
                                 Connexion
                             </button>
+                            <div class="divider">
+                                <span class="bg-light px-4 position-absolute left-50pct top-50pct transform3dxy-n50">Ou</span>
+                            </div>
+                            <a href="{{Route('register')}}" class="btn btn-dark btn-modern w-100 text-transform-none rounded-0 font-weight-bold align-items-center d-inline-flex justify-content-center text-3 py-3" data-loading-text="Loading...">
+                                Inscrivez-vous
+                            </a>
                         </div>
                     </div>
                 </form>

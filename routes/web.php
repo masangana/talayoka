@@ -22,9 +22,9 @@ use App\Http\Controllers\Web\User\MovieController as UserMovieController;
 |
 */
 
-
-Route::group(['middleware' => 'guest'], function(){
-    Route::get('/', [GuestHomeController::class,'welcome'])->name('welcome');
+Route::get('/', [GuestHomeController::class,'welcome'])->name('welcome');
+Route::prefix('user')->group( function(){
+    
     Route::get('/movies', [UserMovieController::class,'index'])->name('movie.index');
     Route::get('/movie/{slug}', [UserMovieController::class,'showMovie'])->name('movie.show');
     Route::get('/categorie/{name}', [GuestHomeController::class,'showCategory'])->name('category.show');
@@ -57,6 +57,7 @@ Route::group([
     'namespace' => 'Web\User'
     ], function() {
         Route::get('/dashboard', [UserDashboardController::class,'index'])->name('dashboard');
+        Route::get('profile', [UserDashboardController::class,'profile'])->name('profile');
 });
 //Route::get('/user_dashboard', [UserDashboardController::class,'index'])->name('user.dashboard');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [UserDashboardController::class, 'index'])->name('home');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\User;
 use App\Http\Controllers\Controller;
 use App\Models\Series;
 use App\Models\Episode;
+use App\Models\Historical;
 use Illuminate\Http\Request;
 
 class SerieController extends Controller
@@ -18,7 +19,11 @@ class SerieController extends Controller
     
     public function show($slug){
         $serie = Series::with('category', 'artworkInfo', 'seasons')->where('slug', $slug)->firstOrFail();
-
+        Historical::create([
+            'user_id' => auth()->user()->id,
+            'historicable_type' => 'App\Models\Series',
+            'historicable_id' => $serie->id
+        ]);
         return view('user.serie.show', [
             'title' => $serie->title,
             'serie' => $serie,
