@@ -87,12 +87,12 @@
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="icons-bootstrap.html">
+            <a href="#">
               <i class="bi bi-circle"></i><span>Ajouter</span>
             </a>
           </li>
           <li>
-            <a href="icons-remix.html">
+            <a href="#">
               <i class="bi bi-circle"></i><span>Voir</span>
             </a>
           </li>
