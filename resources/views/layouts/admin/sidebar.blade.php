@@ -47,16 +47,16 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Musiques</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-layout-text-window-reverse"></i><span>Artistes</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="tables-general.html">
+            <a href="{{Route('admin.artist.create')}}">
               <i class="bi bi-circle"></i><span>Ajouter</span>
             </a>
           </li>
           <li>
-            <a href="tables-data.html">
+            <a href="{{Route('admin.artist.index')}}">
               <i class="bi bi-circle"></i><span>Voir</span>
             </a>
           </li>

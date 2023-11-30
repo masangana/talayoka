@@ -6,6 +6,7 @@ use App\Http\Controllers\Web\Admin\SerieController as AdminSerieController;
 use App\Http\Controllers\Web\Admin\SeasonController as AdminSeasonController;
 use App\Http\Controllers\Web\Admin\EpisodeController as AdminEpisodeController;
 use App\Http\Controllers\Web\Admin\MovieController as AdminMovieController;
+use App\Http\Controllers\Web\Admin\ArtistController as AdminArtistController;
 use App\Http\Controllers\HomeController as GuestHomeController;
 use App\Http\Controllers\Web\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\Web\User\SerieController as UserSerieController;
@@ -46,6 +47,7 @@ Route::group([
         Route::resource('season', AdminSeasonController::class);
         Route::resource('episode', AdminEpisodeController::class);
         Route::resource('movie', AdminMovieController::class);
+        Route::resource('artist', AdminArtistController::class);
 });
 //Route::get('/admin_dashboard', [AdminDashboardController::class,'index'])->name('admin.dashboard');
 
