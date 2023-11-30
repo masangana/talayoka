@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Historical;
 use App\Models\Movie;
 use App\Models\Series;
 use Illuminate\Http\Request;
@@ -36,5 +37,16 @@ class DashboardController extends Controller
           'lastesSeries' => $lastesSeries,
           'classicMovies' => $classicMovies,
       ]);
+    }
+
+    public function profile() {
+        $serieHists = Historical::where('user_id', auth()->user()->id)->with('historicable')->where('historicable_type', 'App\Models\Series')->latest()->paginate(6);
+        $movieHists= Historical::where('user_id', auth()->user()->id)->with('historicable')->where('historicable_type', 'App\Models\Movie')->latest()->paginate(6);
+        
+        return view('user.profile.show', [
+          'title' => "Mon profil",
+          'serieHists' => $serieHists,
+          'movieHists' => $movieHists,
+        ]);
     }
 }

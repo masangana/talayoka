@@ -82,7 +82,7 @@
                                                     @if(Route::current()->getName() == 'user.profile')
                                                         active
                                                     @endif"
-                                                    href="#">
+                                                    href="{{Route('user.profile')}}">
                                                     Profile
                                                 </a>
                                             </li>

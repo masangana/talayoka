@@ -18,11 +18,16 @@ class MovieController extends Controller
 
     public function showMovie($slug){
         $movie = Movie::with('category', 'artworkInfo')->where('slug', $slug)->firstOrFail();
-        Historical::create([
-            'user_id' => auth()->user()->id,
-            'historicable_type' => 'App\Models\Movie',
-            'historicable_id' => $movie->id
-        ]);
+        if(auth()->user()){
+            $historical = Historical::where('user_id', auth()->user()->id)->where('historicable_id', $movie->id)->where('historicable_type', 'App\Models\Movie')->first();
+            if($historical == null){
+                Historical::create([
+                    'user_id' => auth()->user()->id,
+                    'historicable_type' => 'App\Models\Movie',
+                    'historicable_id' => $movie->id
+                ]);
+            }   
+        }
         return view('user.movie.show', [
             'title' => $movie->title,
             'movie' => $movie,

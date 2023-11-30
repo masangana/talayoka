@@ -19,11 +19,16 @@ class SerieController extends Controller
     
     public function show($slug){
         $serie = Series::with('category', 'artworkInfo', 'seasons')->where('slug', $slug)->firstOrFail();
-        Historical::create([
-            'user_id' => auth()->user()->id,
-            'historicable_type' => 'App\Models\Series',
-            'historicable_id' => $serie->id
-        ]);
+        if(auth()->user()){
+            $historical = Historical::where('user_id', auth()->user()->id)->where('historicable_id', $serie->id)->where('historicable_type', 'App\Models\Series')->first();
+            if($historical == null){
+                Historical::create([
+                    'user_id' => auth()->user()->id,
+                    'historicable_type' => 'App\Models\Series',
+                    'historicable_id' => $serie->id
+                ]);
+            }   
+        }
         return view('user.serie.show', [
             'title' => $serie->title,
             'serie' => $serie,

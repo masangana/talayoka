@@ -24,7 +24,6 @@ use App\Http\Controllers\Web\User\MovieController as UserMovieController;
 
 Route::get('/', [GuestHomeController::class,'welcome'])->name('welcome');
 Route::prefix('user')->group( function(){
-    
     Route::get('/movies', [UserMovieController::class,'index'])->name('movie.index');
     Route::get('/movie/{slug}', [UserMovieController::class,'showMovie'])->name('movie.show');
     Route::get('/categorie/{name}', [GuestHomeController::class,'showCategory'])->name('category.show');

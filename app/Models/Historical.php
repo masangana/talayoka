@@ -16,7 +16,7 @@ class Historical extends Model
     ];
 
     public function historicable(){
-        return $this->morphTo();
+        return $this->morphTo()->with('artworkInfo');
     }
 
     public function user(){
