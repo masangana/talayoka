@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Artist;
 use App\Models\Artwork;
+use App\Models\ArtworkInfo;
 use App\Models\Historical;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image as ImageIntervention;
@@ -13,9 +14,10 @@ use Illuminate\Http\Request;
 class ArtistController extends Controller
 {
     public function index(){
+        //return $artists = Artist::with('artworkable')-> latest()->paginate(12);
         return view('admin.artist.index', [
             'title' => "Liste des artistes",
-            'artists' => Artist::latest()->paginate(12),
+            'artists' => Artist::with('artworkable')-> latest()->paginate(12),
         ]);
     }
 
@@ -36,14 +38,14 @@ class ArtistController extends Controller
         ]);
 
         try {
-            $result =  DB::transaction(function () use ($request){
+            DB::transaction(function () use ($request){
                 if ($request->hasFile('picture')){
                     $folder_name = time().rand(1,99);
                     $file_name = $folder_name.'.'.$request->picture->extension();
                     ImageIntervention::make($request->picture)->resize(550, 412)->save(storage_path('app/public/picture/'.$file_name));
                 }
 
-                $artist = Artist::create([
+                Artist::create([
                     'name' => $request->name,
                     'comments' => $request->description,
                     'picture' => $file_name,
@@ -55,5 +57,15 @@ class ArtistController extends Controller
             return redirect()->back()->with('error', "Une erreur est survenue lors de l'ajout de l'artiste");
         }
         return redirect()->back()->with('success', "L'artiste a bien été ajouté");
+    }
+
+    public function show($id){
+        $artist = Artist::findOrFail($id);
+        $artwoks = ArtworkInfo::with('artworkable')->get();
+        return view('admin.artist.show', [
+            'title' => $artist->name,
+            'artist' => $artist,
+            'artworks' => $artwoks,
+        ]);
     }
 }
