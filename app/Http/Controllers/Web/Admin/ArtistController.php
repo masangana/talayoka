@@ -61,11 +61,39 @@ class ArtistController extends Controller
 
     public function show($id){
         $artist = Artist::findOrFail($id);
-        $artwoks = ArtworkInfo::with('artworkable')->get();
+        $artwokInfos = ArtworkInfo::with('artworkable')->get();
         return view('admin.artist.show', [
             'title' => $artist->name,
             'artist' => $artist,
-            'artworks' => $artwoks,
+            'artwokInfos' => $artwokInfos,
         ]);
+    }
+
+    public function addArtwork(Request $request){
+        $request->validate([
+            'artist_id' => 'required',
+            'artwork' => 'required',
+        ]);
+        $artwork = explode(',', $_POST['artwork']);
+        $artworkType = $artwork[1];
+        $artworkId = $artwork[0];
+        $existingArtwork = Artwork::where('artist_id', $request->artist_id)
+            ->where('artworkable_type', $artworkType)
+            ->where('artworkable_id', $artworkId)
+            ->first();
+
+            if ($existingArtwork) {
+                return redirect()->back()->with('message', "Existe déjà");
+            } else {
+                // L'enregistrement n'existe pas, vous pouvez créer un nouvel enregistrement
+                Artwork::create([
+                    'artist_id' => $request->artist_id,
+                    'artworkable_type' => $artworkType,
+                    'artworkable_id' => $artworkId,
+                ]);
+                return redirect()->back()->with('message',"Ajouté avec succes");
+            }
+
+        return redirect()->back();
     }
 }

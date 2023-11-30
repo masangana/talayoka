@@ -48,6 +48,7 @@ Route::group([
         Route::resource('episode', AdminEpisodeController::class);
         Route::resource('movie', AdminMovieController::class);
         Route::resource('artist', AdminArtistController::class);
+        Route::post('artwork', [AdminArtistController::class, 'addArtwork'])->name('addArtwork');
 });
 //Route::get('/admin_dashboard', [AdminDashboardController::class,'index'])->name('admin.dashboard');
 

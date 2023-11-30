@@ -10,3 +10,10 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset ('assets/admin/js/main.js')}}"></script>
+
+  <script>
+    $(document).ready(function () {
+    //change selectboxes to selectize mode to be searchable
+      $("#selectShearch").select2();
+    });
+  </script>
