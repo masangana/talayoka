@@ -56,4 +56,14 @@ class HomeController extends Controller
             'classicMovies' => $classicMovies,
         ]);
     }
+
+    public function showCategory($name){
+        $category = Category::where('name', $name)->firstOrFail();
+        return view('user.category.show', [
+            'title' => $category->name,
+            'category' => $category,
+            'movies' => $category->movies()->with('category', 'artworkInfo')->latest()->paginate(12),
+            'series' => $category->series()->with('category', 'artworkInfo')->latest()->paginate(12),
+        ]);
+    }
 }
