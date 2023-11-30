@@ -28,7 +28,7 @@ class ArtistController extends Controller
     public function store(Request $request){
         
         $this->validate($request, [
-            'name' => 'required|string|max:255|unique:artists',
+            'name' => 'required|string|max:255|unique:artists,name',
             'description' => 'required|string',
             'picture' => 'required|image',
             'date_of_birth' => 'required|date',
@@ -45,13 +45,11 @@ class ArtistController extends Controller
 
                 $artist = Artist::create([
                     'name' => $request->name,
-                    'biography' => $request->description,
+                    'comments' => $request->description,
                     'picture' => $file_name,
                     'date_of_birth' => $request->date_of_birth,
                 ]);
-                return $artist;
             });
-
             return redirect()->back()->with('success', "L'artiste a bien été ajouté");
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', "Une erreur est survenue lors de l'ajout de l'artiste");
