@@ -37,7 +37,7 @@ class SerieController extends Controller
         public function create()
         {
             $categories = Category::all();
-            $series = Series::latest()->get;
+            $series = Series::latest()->get();
             return view('admin.serie.create', [
                 'title' => "Créer une serie",
                 'categories' => $categories,
