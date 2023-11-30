@@ -60,7 +60,7 @@ class ArtistController extends Controller
     }
 
     public function show($id){
-        $artist = Artist::findOrFail($id);
+        $artist = Artist::with('artworks')-> findOrFail($id);
         $artwokInfos = ArtworkInfo::with('artworkable')->get();
         return view('admin.artist.show', [
             'title' => $artist->name,

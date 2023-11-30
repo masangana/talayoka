@@ -30,24 +30,24 @@
             <ul class="nav nav-tabs nav-tabs-bordered">
 
               <li class="nav-item">
-                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+                <button class="nav-link " data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
               </li>
 
               <li class="nav-item">
               </li>
 
               <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Oeuvres</button>
               </li>
 
               <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Ajouter une Oeuvre</button>
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-change-password">Ajouter une Oeuvre</button>
               </li>
 
             </ul>
             <div class="tab-content pt-2">
 
-              <div class="tab-pane fade show active profile-overview" id="profile-overview">
+              <div class="tab-pane fade profile-overview" id="profile-overview">
                 <h5 class="card-title">About</h5>
                 <p class="small fst-italic">
                     {{$artist->comments}}
@@ -205,51 +205,33 @@
               </div>
 
               <div class="tab-pane fade pt-3" id="profile-settings">
-
-                <!-- Settings Form -->
-                <form>
-
-                  <div class="row mb-3">
-                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email Notifications</label>
-                    <div class="col-md-8 col-lg-9">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="changesMade" checked>
-                        <label class="form-check-label" for="changesMade">
-                          Changes made to your account
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="newProducts" checked>
-                        <label class="form-check-label" for="newProducts">
-                          Information on new products and services
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="proOffers">
-                        <label class="form-check-label" for="proOffers">
-                          Marketing and promo offers
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="securityNotify" checked disabled>
-                        <label class="form-check-label" for="securityNotify">
-                          Security alerts
-                        </label>
-                      </div>
+                <div class="col-lg-12">
+                    <div class="row">
+                        @foreach($artist->artworks as $artwork)
+                            <div class="col-xxl-4 col-md-6">
+                                <div class="card info-card sales-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        {{$artwork->artworkable->title}}
+                                    </h5>
+                                </div>
+                    
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                  </div>
-
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                  </div>
-                </form><!-- End settings Form -->
-
+                </div>
               </div>
 
-              <div class="tab-pane fade pt-3" id="profile-change-password">
+              <div class="tab-pane fade show active pt-3" id="profile-change-password">
                 <!-- Change Password Form -->
                 <form action="{{Route('admin.addArtwork')}}" method="POST">
-
+                    @if (session('message'))
+                        <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert">
+                        Artiste ajouté avec succès
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
                     @csrf
                     <input type="hidden" name="artist_id" value="{{$artist->id}}">
                     <div class="row mb-3">
@@ -266,7 +248,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Change Password</button>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
                     </div>
                 </form><!-- End Change Password Form -->
 

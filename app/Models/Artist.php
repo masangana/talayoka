@@ -23,8 +23,8 @@ class Artist extends Model
         'comments',
     ];
 
-    public function artwork(){
-        return $this->hasMany(Artwork::class);
+    public function artworks(){
+        return $this->hasMany(Artwork::class)->with('artworkable');
     }
 
     public function artworkable(): MorphTo
