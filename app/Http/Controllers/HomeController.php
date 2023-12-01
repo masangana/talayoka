@@ -66,4 +66,8 @@ class HomeController extends Controller
             'series' => $category->series()->with('category', 'artworkInfo')->latest()->paginate(12),
         ]);
     }
+
+    public function subscription (){
+        return view('user.subscription.index');
+    }
 }
