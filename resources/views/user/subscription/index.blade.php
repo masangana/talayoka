@@ -191,7 +191,7 @@
                     </div>
                 </div>
             </div>
-            <a href="https://themeforest.net/checkout/from_item/4106987?license=regular&support=bundle_6month&ref=Okler" class="btn btn-dark btn-modern btn-rounded px-5 btn-py-3 text-4 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1800" data-appear-animation-duration="750" target="_blank">BUY PORTO NOW</a>
+            <a href="#examples" class="btn btn-dark btn-modern btn-rounded px-5 btn-py-3 text-4 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1800" data-appear-animation-duration="750" target="_blank">BUY PORTO NOW</a>
         </div>
         <div class="row border border-start-0 border-bottom-0 border-end-0 border-color-light-2">
             <div class="col-6 col-md-3 text-center d-flex align-items-center justify-content-center py-4">
