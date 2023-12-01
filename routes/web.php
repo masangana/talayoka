@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeController as GuestHomeController;
 use App\Http\Controllers\Web\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\Web\User\SerieController as UserSerieController;
 use App\Http\Controllers\Web\User\MovieController as UserMovieController;
+use App\Http\Controllers\Web\User\ArtistController as UserArtistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +34,14 @@ Route::prefix('user')->group( function(){
     Route::get('/season/{id}', [GuestHomeController::class,'showSeason'])->name('season.show');
     Route::get('/serie/{slug}/season/{title}/episode/{id}', [UserSerieController::class,'showEpisode'])->name('episode.show');
     Route::get('/search', [GuestHomeController::class,'search'])->name('search');
+    Route::get('artists', [UserArtistController::class, 'index'])->name('user.artist.index');
+    Route::get('artists/{id}', [UserArtistController::class, 'show'])->name('user.artist.show');
+    Route::get('subscription', [GuestHomeController::class, 'subscription'])->name('user.subscription');
 });
 
 Auth::routes();
+
+
 
 Route::group([
     'middleware' => 'role:admin',

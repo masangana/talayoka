@@ -62,13 +62,13 @@
                                             </a>
                                         </li>
                                         <li class="dropdown">
-                                            <a class="dropdown-item dropdown-toggle" href="#">
-                                                Musiques
+                                            <a class="dropdown-item dropdown-toggle" href="{{Route('user.artist.index')}}">
+                                                Artistes
                                             </a>
                                         </li>
                                         <li class="dropdown">
-                                            <a class="dropdown-item dropdown-toggle" href="#">
-                                                Vidéos
+                                            <a class="dropdown-item dropdown-toggle" href="{{Route('user.subscription')}}">
+                                                Abonnements
                                             </a>
                                         </li>
                                         <li class="dropdown">
