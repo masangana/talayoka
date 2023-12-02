@@ -18,6 +18,6 @@ class Artwork extends Model
     ];
 
     public function artworkable(){
-        return $this->morphTo();
+        return $this->morphTo()->with('artworkInfo');
     }
 }
