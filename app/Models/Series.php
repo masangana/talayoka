@@ -30,4 +30,8 @@ class Series extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+
+    public function artists(){
+        return $this->morphMany(Artwork::class, 'artworkable')->with('artists');
+    }
 }

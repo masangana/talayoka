@@ -18,7 +18,7 @@ class SerieController extends Controller
     }
     
     public function show($slug){
-        $serie = Series::with('category', 'artworkInfo', 'seasons')->where('slug', $slug)->firstOrFail();
+        $serie = Series::with('category', 'artworkInfo', 'seasons', 'artists')->where('slug', $slug)->firstOrFail();
         if(auth()->user()){
             $historical = Historical::where('user_id', auth()->user()->id)->where('historicable_id', $serie->id)->where('historicable_type', 'App\Models\Series')->first();
             if($historical == null){

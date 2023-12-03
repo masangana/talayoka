@@ -59,7 +59,7 @@
                                         <div class="post-block post-author pt-2col-md-6 col-lg-4">
                                             <div class="img-thumbnail img-thumbnail-no-borders d-block pb-3">
                                                 <a href="{{Route('user.artist.show', $artist->artists->id)}}">
-                                                    <img class="border-radius-0" src="{{asset('storage/picture/'.$artist->artists->picture)}}" alt="{{$artist->artists->name}}" style="height: 112px; max-height: 112px; width: auto; max-width: 100%;">
+                                                    <img class="border-radius-0" src="{{asset('storage/picture/'.$artist->artists->picture)}}" alt="{{$artist->artists->name}}" style="height: 50px; max-height: 60px; width: 100px; max-width: 100%;">
                                                 </a>
                                             </div>
                                             <p>

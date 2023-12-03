@@ -56,6 +56,7 @@
                             @endif
                         </div>
 
+                        <hr>
                         <div class="post-content ms-0">
                             <h2 class="font-weight-semi-bold">
                                 {{optional($episodeView)->title}}
@@ -66,6 +67,43 @@
                             <p>
                                 {{optional($episodeView)->comment}}
                             </p>
+                        </div>
+
+                        <hr>
+                        <div class="post-content ms-0">
+                            <h2 class="font-weight-semi-bold">
+                                Casting
+                            </h2>
+                        </div>
+
+                        <div class="post-content ms-0">
+                            @if($serie->artists->count()== 0)
+                                <div class="post-content ms-0">
+                                    <p>
+                                        Aucune Information
+                                    </p>
+                                </div>
+                            @endif
+                            <div class="container container-xl-custom">
+                                <div class="row py-5">
+                                    @foreach($serie->artists as $artist)
+                                        <div class="post-block post-author pt-2col-md-6 col-lg-4">
+                                            <div class="img-thumbnail img-thumbnail-no-borders d-block pb-3">
+                                                <a href="{{Route('user.artist.show', $artist->artists->id)}}">
+                                                    <img class="border-radius-0" src="{{asset('storage/picture/'.$artist->artists->picture)}}" alt="{{$artist->artists->name}}" style="height: 50px; max-height: 60px; width: 100px; max-width: 100%;">
+                                                </a>
+                                            </div>
+                                            <p>
+                                                <strong class="name">
+                                                    <a href="{{Route('user.artist.show', $artist->artists->id)}}" class="text-4 pb-2 pt-2 d-block text-dark">
+                                                        {{$artist->artists->name}}
+                                                    </a>
+                                                </strong>
+                                            </p>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
                     </article>
 

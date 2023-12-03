@@ -17,7 +17,7 @@ class MovieController extends Controller
     }
 
     public function showMovie($slug){
-        $movie = Movie::with('category', 'artworkInfo','artists')->where('slug', $slug)->firstOrFail();
+        $movie = Movie::with('category', 'artworkInfo', 'artists')->where('slug', $slug)->firstOrFail();
         if(auth()->user()){
             $historical = Historical::where('user_id', auth()->user()->id)->where('historicable_id', $movie->id)->where('historicable_type', 'App\Models\Movie')->first();
             if($historical == null){
