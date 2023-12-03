@@ -7,13 +7,13 @@
             <div class="row pb-1">
                 @foreach ($lastMovies as $lastMovie)
                     <div class="col-sm-6 col-lg-4 mb-4 pb-2">
-                        <a href="blog-post.html">
+                        <a href="{{Route('movie.show', $lastMovie->slug)}}">
                             <article>
                                 <div class="thumb-info thumb-info-no-borders thumb-info-bottom-info thumb-info-bottom-info-dark thumb-info-bottom-info-show-more thumb-info-no-zoom border-radius-0">
                                     <div class="thumb-info-wrapper thumb-info-wrapper-opacity-6">
                                         <img src="{{asset('storage/cover/'.$lastMovie->artworkInfo->cover)}}" class="img-fluid" alt="How To Take Better Concert Pictures in 30 Seconds">
                                         <div class="thumb-info-title bg-transparent p-4">
-                                            <div class="thumb-info-type bg-color-primary px-2 mb-1">{{$lastMovie->category->name}}</div>
+                                            <div class="thumb-info-type bg-color-quaternary px-2 mb-1">{{$lastMovie->category->name}}</div>
                                             <div class="thumb-info-inner mt-1">
                                                 <h2 class="text-color-light line-height-2 text-4 font-weight-bold mb-0">
                                                     <a href="{{Route('movie.show', $lastMovie->slug)}}" class="text-color-light text-decoration-none">{{$lastMovie->title}}</a>

@@ -20,4 +20,8 @@ class Artwork extends Model
     public function artworkable(){
         return $this->morphTo()->with('artworkInfo');
     }
+
+    public function artists(){
+        return $this->belongsTo(Artist::class, 'artist_id');
+    }
 }

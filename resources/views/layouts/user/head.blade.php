@@ -4,11 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Demo Creative Agency 2 | Porto - Multipurpose Website Template</title>	
+    <title>
+        TalaYoka
+    </title>	
 
-    <meta name="keywords" content="WebSite Template" />
-    <meta name="description" content="Porto - Multipurpose Website Template">
-    <meta name="author" content="okler.net">
+    <meta name="keywords" content="TalaYoka Web version" />
+    <meta name="description" content="SiteWeb multimedia 100% Congolais">
+    <meta name="author" content="alexmasangana@gmail.com">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
